@@ -31,14 +31,7 @@ const echartsJenkinsApi = {
      * @return {string|string}
      */
     resolveJenkinsColor: function (colorName) {
-        const color = getComputedStyle(document.body).getPropertyValue(colorName) || '#333';
-
-        try {
-            return new Color(color).to("sRGB").toString({format: "hex"});
-        }
-        catch (e) {
-            return '#333';
-        }
+        return getComputedStyle(document.body).getPropertyValue(colorName) || '#333';
     },
 
     /**
@@ -81,6 +74,24 @@ const echartsJenkinsApi = {
         const common = echartsJenkinsApi.readFromLocalStorage(trendDefaultStorageId);
 
         return Object.assign(specific, common);
+    },
+
+    /**
+     * Fixes the emphasis of the series elements in the specified model.
+     *
+     * @param {String} model - the model that contains the chart series
+     */
+    fixEmphasis: function fixEmphasis(model) {
+        const inheritColors = {
+            focus: 'series',
+            color: 'inherit',
+            areaStyle: {color: 'inherit'}
+        };
+        model.series.forEach(seriesElement => {
+            if (!seriesElement.hasOwnProperty('emphasis') || seriesElement.emphasis === null) {
+                seriesElement.emphasis = inheritColors; // NOPMD
+            }
+        });
     },
 
     /**
@@ -294,6 +305,8 @@ const echartsJenkinsApi = {
             return dataZoomOptions;
         }
 
+        echartsJenkinsApi.fixEmphasis(chartModel);
+
         const options = {
             tooltip: {
                 trigger: 'axis',
@@ -392,6 +405,8 @@ const echartsJenkinsApi = {
         }
 
         function createOptions(chartModel) {
+            echartsJenkinsApi.fixEmphasis(chartModel);
+
             const textColor = getComputedStyle(document.body).getPropertyValue('--text-color') || '#333';
             return {
                 tooltip: {
@@ -491,7 +506,15 @@ const echartsJenkinsApi = {
                             }
 
                             if (selectedBuild > 0) {
-                                window.location.assign(selectedBuild + '/' + urlName);
+                                const buildUrl = selectedBuild + '/' + urlName;
+                                const evt = params.event;
+                                if (evt && (evt.ctrlKey || evt.metaKey)) {
+                                    window.open(buildUrl, '_blank');
+                                } else if (evt && evt.shiftKey) {
+                                    window.open(buildUrl, '_newWindow');
+                                } else {
+                                    window.location.assign(buildUrl)
+                                }
                             }
                         }
                     })
@@ -657,6 +680,11 @@ const echartsJenkinsApi = {
                             show: false
                         }
                     },
+                    emphasis: {
+                        itemStyle: {
+                            color: 'inherit'
+                        }
+                    },
                     labelLine: {
                         normal: {
                             show: true
@@ -666,7 +694,7 @@ const echartsJenkinsApi = {
                 }
                 ]
             };
-            chart.setOption(options);
+            chart.setOption(options, true);
             chart.resize();
 
             const useLinks = chartPlaceHolder.attr('data-links');

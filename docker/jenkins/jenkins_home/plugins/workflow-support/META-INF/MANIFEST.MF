@@ -4,14 +4,14 @@ Build-Jdk-Spec: 17
 Specification-Title: Pipeline: Supporting APIs
 Specification-Version: 0.0
 Implementation-Title: Pipeline: Supporting APIs
-Implementation-Version: 963.va_600813d04a_a_
+Implementation-Version: 968.v8f17397e87b_8
 Group-Id: org.jenkins-ci.plugins.workflow
 Artifact-Id: workflow-support
 Short-Name: workflow-support
 Long-Name: Pipeline: Supporting APIs
 Url: https://github.com/jenkinsci/workflow-support-plugin
 Compatible-Since-Version: 3.0
-Plugin-Version: 963.va_600813d04a_a_
+Plugin-Version: 968.v8f17397e87b_8
 Hudson-Version: 2.479.1
 Jenkins-Version: 2.479.1
 Plugin-Dependencies: caffeine-api:3.1.8-133.v17b_1ff2e0599,workflow-api:
@@ -22,7 +22,7 @@ Plugin-License-Name: MIT License
 Plugin-License-Url: https://opensource.org/licenses/MIT
 Plugin-ScmConnection: scm:git:https://github.com/jenkinsci/workflow-supp
  ort-plugin.git
-Plugin-ScmTag: a600813d04aac835e7e2bf62a8aaa775c4cd4437
+Plugin-ScmTag: 8f17397e87b8f3995e61b991db394dfc5aa3a2b5
 Plugin-ScmUrl: https://github.com/jenkinsci/workflow-support-plugin
-Implementation-Build: a600813d04aac835e7e2bf62a8aaa775c4cd4437
+Implementation-Build: 8f17397e87b8f3995e61b991db394dfc5aa3a2b5
 

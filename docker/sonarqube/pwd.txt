@@ -3,4 +3,4 @@ admin
 Da123456*sonar
 
 Token:
-squ_190b1bf50380e87c2ec68caaa9bf70530408b66a
+squ_fbcd2b37d0d0e7834766924bba2647afb0568e76
