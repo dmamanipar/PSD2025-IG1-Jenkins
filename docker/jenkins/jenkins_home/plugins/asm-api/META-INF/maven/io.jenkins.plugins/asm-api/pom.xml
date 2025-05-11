@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>io.jenkins.plugins</groupId>
   <artifactId>asm-api</artifactId>
-  <version>9.7.1-95.v9f552033802a_</version>
+  <version>9.7.1-97.v4cc844130d97</version>
   <packaging>hpi</packaging>
   <name>ASM API Plugin</name>
   <description>The Jenkins Plugins Parent POM Project</description>
@@ -19,7 +19,7 @@
   <scm>
     <connection>scm:git:https://github.com/jenkinsci/asm-api-plugin</connection>
     <developerConnection>scm:git:https://github.com/jenkinsci/asm-api-plugin</developerConnection>
-    <tag>9f552033802a0a538a42b1a8da2fc0c30f0de8e2</tag>
+    <tag>4cc844130d97df9c80465836530b58e5f5e01b21</tag>
     <url>https://github.com/jenkinsci/asm-api-plugin</url>
   </scm>
   <distributionManagement>
